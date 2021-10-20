@@ -86,7 +86,6 @@ header {
 .navbar .navbar-main ul li {
 	height: inherit;
 	line-height: inherit;
-	display: flex;
 	align-items: center;
 	border-left: 1px solid;
 	place-content: center;
