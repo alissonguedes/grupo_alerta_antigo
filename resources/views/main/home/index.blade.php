@@ -180,9 +180,9 @@
 
 					<div class="row">
 
-						<div class="col s4 offset-s4">
+						<div class="col s12 center-align">
 
-							<h2 class="title white-text center-align">Os melhores serviços para você e sua empresa</h2>
+							<h2 class="title white-text center-align">Nível superior de serviços <br> para a sua empresa</h2>
 
 						</div>
 
@@ -214,6 +214,8 @@
 						</div>
 						@endfor
 
+					</div>
+
 				</div>
 
 			</div>
@@ -224,5 +226,94 @@
 
 </div>
 <!-- END #servicos -->
+
+<!-- BEGIN #seguranca -->
+<div id="seguranca-profissional">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col s12">
+
+				<div class="pt-5 pb-5">
+
+					<div class="row">
+
+						<div class="col s12 center-align">
+
+							<h4 class="subtitle grey-text"> Nossa Segurança </h4>
+
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col s12">
+
+							<h2 class="title black-text center-align">Segurança Profissional</h2>
+
+						</div>
+
+						<div class="col s12 mb-2"></div>
+
+					</div>
+
+					<div class="row pt-1 pb-1 pr-2">
+
+						<div class="col s12">
+							<div class="card horizontal no-border transparent">
+								<div class="card-title">
+									<span class="title white-text">Executamos mais de <u>400 trabalhos</u>
+										com segurança todos os anos.</span>
+								</div>
+								<div class="card-image">
+									<img src="{{ asset('assets/grupoalertaweb/uploads/2020/05/dsvy-image-3-1.png') }}" class="b-radius-0">
+								</div>
+								<div class="card-icon">
+									<i class="flaticon-policeman"></i>
+									{{-- <img src="{{ asset('assets/grupoalertaweb/uploads/images/icon_eletronica.png') }}" alt=""> --}}
+								</div>
+								<div class="card-stacked white">
+									<div class="card-content">
+										<h2>Segurança integrada eficaz</h2>
+										<p class="grey-text">
+											Obtenha a melhor segurança de um guarda-costas atencioso e profissional. Nossa solução é econômica e temos a certeza de que você e sua equipe de comando são parte contra uma tentativa.
+										</p>
+										<ul class="">
+											<li class="">
+												<span class="">
+													<i aria-hidden="true" class="fas fa-square-full"></i> </span>
+												<span class="elementor-icon-list-text">Equipe de segurança experiente</span>
+											</li>
+											<li class="">
+												<span class="">
+													<i aria-hidden="true" class="fas fa-square-full"></i> </span>
+												<span class="elementor-icon-list-text">Guarda de gerenciamento de patrulha móvel</span>
+											</li>
+											<li class="">
+												<span class="">
+													<i aria-hidden="true" class="fas fa-square-full"></i> </span>
+												<span class="elementor-icon-list-text">Serviços de Segurança Individual</span>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+<!-- END #seguranca -->
 
 @endsection
