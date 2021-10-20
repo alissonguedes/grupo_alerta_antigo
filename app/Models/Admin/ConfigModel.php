@@ -2,9 +2,6 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +11,7 @@ class ConfigModel extends Authenticatable
 
     use HasFactory, Notifiable;
 
-	protected $table = 'tb_sys_config';
+    protected $table = 'tb_sys_config';
 
     /**
      * The attributes that are mass assignable.
@@ -46,33 +43,35 @@ class ConfigModel extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-	private $order = [
-		null,
-		'descricao',
-		'status',
-	];
+    private $order = [
+        null,
+        'descricao',
+        'status',
+    ];
 
-	public function debug($get) {
-		echo '==> ';
-		echo '<br>';
-		$query = str_replace(array('?'), array('\'%s\''), $get -> toSql());
-		$query = vsprintf($query, $get -> getBindings());
-		dump($query);
-		echo '<br>';
-		echo '==> ';
-	}
+    public function debug($get)
+    {
+        echo '==> ';
+        echo '<br>';
+        $query = str_replace(array('?'), array('\'%s\''), $get->toSql());
+        $query = vsprintf($query, $get->getBindings());
+        dump($query);
+        echo '<br>';
+        echo '==> ';
+    }
 
-	public function getConfig($find = null) {
+    public function getConfig($find = null)
+    {
 
-		$get = $this -> select('id', 'config', 'value');
+        $get = $this->select('id', 'config', 'value');
 
-		if ( !is_null($find) ) {
-			$get -> where('config', $find);
-			$get -> orWhere('id', $find);
-			return $get ;
-		}
+        if (!is_null($find)) {
+            $get->where('config', $find);
+            $get->orWhere('id', $find);
+            return $get;
+        }
 
-		// if (isset($_GET['search']['value']) && !empty($_GET['search']['value'])) {
+        // if (isset($_GET['search']['value']) && !empty($_GET['search']['value'])) {
         //     $get->where(function ($get) {
         //         $search = $_GET['search']['value'];
         //         $get->orWhere('id', 'like', $search . '%')
@@ -81,71 +80,80 @@ class ConfigModel extends Authenticatable
         //     });
         // }
 
-		// Order By
-		if (isset($_GET['order']) && $_GET['order'][0]['column'] != 0 ) {
-			$orderBy[$this -> order[$_GET['order'][0]['column']]] = $_GET['order'][0]['dir'];
-		} else {
-			$orderBy[$this -> order[1]] = 'desc';
-		}
+        // Order By
+        if (isset($_GET['order']) && $_GET['order'][0]['column'] != 0) {
+            $orderBy[$this->order[$_GET['order'][0]['column']]] = $_GET['order'][0]['dir'];
+        } else {
+            $orderBy[$this->order[1]] = 'desc';
+        }
 
-		foreach($orderBy as $key => $val) {
-			$get -> orderBy($key, $val);
-		}
+        foreach ($orderBy as $key => $val) {
+            $get->orderBy($key, $val);
+        }
 
-		return $get -> paginate($_GET['length'] ?? null);
+        return $get->paginate($_GET['length'] ?? null);
 
-	}
+    }
 
-	public function create($request) {
+    public function create($request)
+    {
 
-		$data   = [];
-		$path = 'assets/embaixada/img/';
-		$origName = null;
-		$fileName = null;
-		$imagem = null;
+        echo '<pre>';
+        print_r($_POST);
 
-		if ( $request -> file('site_logo') ){
+        $data = [];
+        $path = 'assets/embaixada/img/';
+        $origName = null;
+        $fileName = null;
+        $imagem = null;
 
-			$file = $request -> file('site_logo');
+        if ($request->file('site_logo')) {
+            $file = $request->file('site_logo');
+            $fileName = sha1($file->getClientOriginalName());
+            $fileExt = $file->getClientOriginalExtension();
+            $imgName = explode('.', ($file->getClientOriginalName()));
+            $origName = limpa_string($imgName[count($imgName) - 2], '_') . '.' . $fileExt;
+            $imagem = limpa_string($fileName) . '.' . $fileExt;
+            $file->storeAs($path, $imagem);
+            $data[] = ['config' => 'site_logo', 'value' => $path . $imagem];
+            $data[] = ['config' => 'original_logo_name', 'value' => $origName];
+        }
 
-			$fileName = sha1($file -> getClientOriginalName());
-			$fileExt  = $file -> getClientOriginalExtension();
+        $traducao = [];
 
-			$imgName  = explode('.', ($file -> getClientOriginalName()));
+        foreach ($_POST as $ind => $val) {
 
-			$origName = limpa_string($imgName[count($imgName) - 2], '_') . '.' . $fileExt;
-			$imagem = limpa_string($fileName) . '.' . $fileExt;
+            $lang = explode(':', $ind);
 
-			$file -> storeAs($path, $imagem);
+            if (count($lang) == 2) {
+                // $traducao[$lang[1]][$lang[0]] = $val;
+                // $config['config'][$lang[1]] = $lang[1];
+                // $config['value'][$lang[1]] = json_encode($traducao[$lang[1]]);
+                // $data[$traducao[$lang[1]][$lang[0]]] = $config;
+            } else {
+                $config = ['config' => $ind, 'value' => (!empty($val) ? $val : null)];
+                $data['config'][$ind] = $config;
+            }
 
-			$data[] = ['config' => 'site_logo', 'value' => $path . $imagem];
-			$data[] = ['config' => 'original_logo_name', 'value' => $origName];
+        }
+        dump($data);
 
-		}
+        for ($i = 0; $i < count($data); $i++) {
 
-		$traducao	= [];
+            $issetConfig = $this->select('config', 'value')->where('config', $data[$i]['config'])->first();
 
-		foreach($_POST as $ind => $val) {
-			if($ind !== 'site_logo')
-				$data[] = ['config' => $ind, 'value' => (!empty($val) ? $val : null)];
-		}
+            if (isset($issetConfig)) {
+                if ($data[$i]['value'] != $issetConfig->value) {
+                    $this->where('config', $data[$i]['config'])->update($data[$i]);
+                }
+            } else {
+                $this->insert($data[$i]);
+            }
 
-		for ( $i = 0; $i < count($data); $i ++ ) {
+        }
 
-			$issetConfig = $this -> select('config', 'value') -> where('config', $data[$i]['config']) -> first();
+        return true;
 
-			if( isset($issetConfig) ) {
-				if ( $data[$i]['value'] != $issetConfig -> value){
-					$this -> where('config', $data[$i]['config']) -> update($data[$i]);
-				}
-			} else {
-				$this -> insert($data[$i]);
-			}
-
-		}
-
-		return true;
-
-	}
+    }
 
 }

@@ -3,73 +3,68 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="pt-br"> <![endif]-->
 <!--[if (gte IE 8)|!(IE)]><!-->
 <html lang="{{ !isset($_COOKIE['idioma']) ? get_config('language') : $_COOKIE['idioma'] }}">
-<!--<![endif]-->
+	<!--<![endif]-->
 
-<head>
+	<head>
 
-    <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="robots" content="index, follow">
+		<meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="theme-color" content="{{ config('theme_color') }}">
-    <meta name="apple-mobile-web-app-status-bar-style" content="{{ config('theme_color') }}">
-    <meta name="msapplication-navbutton-color" content="{{ config('theme_color') }}">
+		<meta name="description" content="{{ get_config('site_description') }}" />
+		<meta name="keywords" content="{{ get_config('site_tags') }}" />
+		<meta name="robots" content="index, follow">
 
-    <title>
-        {{ tradutor([
-			'en' => 'EMBASSY OF THE REPUBLIC OF ANGOLA IN HUNGARY',
-			'hr' => 'A KÖZTÁRSASÁG NAGYKÖVETSÉGE ANGOLA MAGYARORSZÁGON',
-			'pt-br' => 'EMBAIXADA DA REPÚBLICA DE ANGOLA NA HUNGRIA',
-		]) }}
-        -
-        @yield('title')
-    </title>
+		<meta name="theme-color" content="{{ get_config('theme_color') }}">
+		<meta name="apple-mobile-web-app-status-bar-style" content="{{ get_config('theme_color') }}">
+		<meta name="msapplication-navbutton-color" content="{{ get_config('theme_color') }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
 
-    @include('admin.layouts.styles')
+		<title>
+			{{ get_config('site_title') }} - @yield('title')
+		</title>
 
-</head>
+		@include('admin.layouts.styles')
 
-<body>
+	</head>
 
-    <div id="body">
+	<body>
 
-        @include('admin.layouts.header')
-        @include('admin.layouts.sidebar')
+		<div id="body">
 
-        @section('container')
+			@include('admin.layouts.header')
+			@include('admin.layouts.sidebar')
 
-            <div id="main">
+			@section('container')
 
-                <div class="row">
+			<div id="main">
 
-                    <div class="col s12">
+				<div class="row">
 
-                        <div class="container">
+					<div class="col s12">
 
-                            <div class="section vertical-dashboard">
-                                @yield('content')
-                            </div>
+						<div class="container">
 
-                        </div>
+							<div class="section vertical-dashboard">
+								@yield('content')
+							</div>
 
-                    </div>
+						</div>
 
-                </div>
+					</div>
 
-                <meta name="csrf-token" content="{{ csrf_token() }}">
+				</div>
 
-            </div>
+				<meta name="csrf-token" content="{{ csrf_token() }}">
 
-            @include('admin.layouts.footer')
+			</div>
 
-        @show
+			@include('admin.layouts.footer')
 
-    </div>
+			@show
 
-    @include('admin.layouts.scripts')
+		</div>
 
-</body>
+		@include('admin.layouts.scripts')
+
+	</body>
 
 </html>

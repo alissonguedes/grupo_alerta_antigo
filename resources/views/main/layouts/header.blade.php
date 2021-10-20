@@ -1,102 +1,117 @@
 <header>
 
-    <!--img_bandeira_angola-->
-    <div class="simbolo_angola">
-        <img src="{{ asset('assets/embaixada/img/simbolo_angola.png') }}" class="img_cem">
-    </div>
+	<div class="navbar">
 
-    <!--barra de pesquisa-->
-    <div class="head_1">
+		<div class="navbar-main hide-on-med-and-down">
 
-        <div class="mil-pixel">
+			<div class="nav-wrapper">
 
-            <form method="post" action="" class="left">
-                <input type="text" name="busca" class="barrabusca" placeholder="{{ tradutor(['en' => 'Search the site', 'hr' => 'Keressen az oldalon', 'pt-br' => 'Pesquisar no site']) }}">
-                <!--fixo-->
-                <div class="bt_busca">
-                    <img src="{{ asset('assets/embaixada/img/lupa.png') }}" class="img_cem">
-                </div>
-            </form>
+				<ul class="contact">
+					<li>
+						<i class="icon-letter"></i>
+						Atendimento: 0800 556 1700
+					</li>
+					<li>
+						<i class="icon-placeholder-1"></i>
+						Matriz - Rua Estelita Cruz, 221 - Alto Branco, Campina Grande - PB
+					</li>
+				</ul>
 
-            <!--idioma-->
-            <div class="idioma left" style="margin-top: 4px; margin-left: 15px;" data-url-lang="{{ url('api/translate/' . ($_COOKIE['idioma'] ?? get_config('language'))) }}">
+				<ul class="social">
+					<li>
+						<a href="{{ url('teste') }}"><i class="icon-facebook"></i></a>
+					</li>
+					<li>
+						<a href="{{ url('teste') }}"><i class="icon-instagram"></i></a>
+					</li>
+					<li>
+						<a href="{{ url('teste') }}"><i class="icon-twitter"></i></a>
+					</li>
+					<li>
+						<a href="{{ url('teste') }}"><i class="icon-youtube"></i></a>
+					</li>
+				</ul>
 
-                {? $idiomas = new App\Models\Main\IdiomaModel(); ?}
+			</div>
 
-                @foreach ($idiomas->getIdioma() as $lang)
-                    @php
-                        if ((isset($_COOKIE['idioma']) && $_COOKIE['idioma'] == $lang->sigla) || (!isset($_COOKIE['idioma']) && get_config('language') == $lang->sigla)) {
-                            $class = 'active';
-                        } else {
-                            $class = null;
-                        }
-                    @endphp
+		</div>
 
-                    <div class="icon_idioma {{ $class }}">
-                        <a href="{{ url('api/translate/' . $lang->sigla) }}" class="languages" id="pt-br">
-                            {{ $lang->label }}
-                            {{-- <img src="{{ asset($lang->imagem) }}" class="img_cem"> --}}
-                        </a>
-                    </div>
-                @endforeach
+		<nav class="nav-extended">
 
-            </div>
-            <!-- idioma -->
+			<div class="nav-wrapper left">
 
-        </div>
+				<h1 class="logo-wrapper">
+					<a href="{{ url('/') }}" class="brand-logo">
+						<img src="{{ asset('assets/grupoalertaweb/uploads/images/logo-dark.png') }}" alt="">
+					</a>
+				</h1>
 
-    </div>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
 
-    <!--barra um-->
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-    <div class="topbar">
+					<li class="active">
+						<a href="{{ url('/') }}">Home</a>
+					</li>
 
-        <div class="head_2">
+					<li class="">
+						<a href="grupo.php">O Grupo</a>
+					</li>
 
-            <!--logo-->
-            <div class="insignia">
-                <img src="{{ asset(get_config('site_logo')) }}" class="img_cem">
-            </div>
-            <div class="nome_site">
-                <div class="nome1">
-                    {{ tradutor(['en' => 'EMBASSY OF THE REPUBLIC', 'hr' => 'A KÖZTÁRSASÁG NAGYKÖVETSÉGE', 'pt-br' => 'EMBAIXADA DA REPÚBLICA']) }}
-                </div>
-                <!--fixo-->
-                <div class="nome2">
-                    {{ tradutor(['en' => 'OF ANGOLA IN HUNGARY', 'hr' => 'ANGOLA MAGYARORSZÁGON', 'pt-br' => 'DE ANGOLA NA HUNGRIA']) }}
-                </div>
-                <!--fixo-->
-            </div>
+					<li class="">
+						<a href="#">Empresas do Grupo</a>
+						<ul class="sub-menu">
+							<li>
+								<a href="alertaeletronica">Alerta Segurança Eletônica</a>
+							</li>
 
-        </div>
+							<li>
+								<a href="alertaservicos">Alerta Serviços</a>
+							</li>
 
-    </div>
+							<li>
+								<a href="forcaalerta">Força Alerta</a>
+							</li>
 
-    <!--barra dois-->
-    <nav>
-        <div class="menu">
+							<li>
+								<a href="alertaconstrutora">Alerta Construtora</a>
+							</li>
 
-            @php $menus = new \App\Models\Main\PaginaModel(); @endphp
+							<li>
+								<a href="portariavirtual">Alerta Portaria Virtual</a>
+							</li>
 
-            @foreach ($menus->getMenus() as $menu)
-                {? $traducao = json_decode($menu -> traducao, true); ?}
-                <a href="{{ url('' . $menu->link) }}">
-                    <div class="lk" data-element=".menu" id="bt_menu">{{ tradutor($traducao) ?? $menu->label }}</div>
-                </a>
-            @endforeach
+							<li>
+								<a href="segurancavalores">Força Alerta Segurança e Transporte de Valores</a>
+							</li>
+						</ul>
+					</li>
 
-        </div>
+					<li class="">
+						<a href="orcamento">Orçamento</a>
+					</li>
 
-    </nav>
+					<li class="">
+						<a href="orcamento">Área do Cliente</a>
+					</li>
 
-    <!--botão mobile-->
-    <div class="bt_menu_mob" data-element=".menu" id="bt_menu">
-        <img src="{{ asset('assets/embaixada/img/bt_mob.png') }}" class="img_cem">
-    </div>
+					<li class="">
+						<a href="contato">Contato</a>
+					</li>
 
-    <!--design_header-->
-    <div class="design_header">
-        <img src="{{ asset('assets/embaixada/img/top_black.png') }}" class="img_cem">
-    </div>
+				</ul>
+
+			</div>
+
+			<div class="nav-wrapper whatsapp right">
+				<a href="#">
+					<span class="contact-title">Chame-nos no Whatsapp:</span>
+					<span class="contact-phone">(83) 3066.5758</span>
+				</a>
+			</div>
+
+		</nav>
+
+	</div>
 
 </header>

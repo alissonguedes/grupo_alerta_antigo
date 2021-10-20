@@ -154,7 +154,6 @@ $input_label_hidden = null;
             </div>
             <!-- END tipo-pagina -->
 
-
             <!-- BEGIN galeria -->
             <div id="galeria" style="{{ $inactive }}">
                 <div class="row">
@@ -251,7 +250,7 @@ $input_label_hidden = null;
 
                             @if (isset($arquivos))
                                 <div class="input-field media">
-                                    <div class="___class_+?53___">
+                                    <div>
                                         <span class="count-files">{{ count($arquivos) }}</span>
                                         @if (count($arquivos) > 1)
                                             arquivos cadastrados
@@ -308,7 +307,7 @@ $input_label_hidden = null;
                     <div class="row">
                         <div class="col s12 mb-1">
                             <div class="input-field">
-                                <label class="___class_+?66___">Título</label>
+                                <label>Título</label>
                                 <input type="text" name="{{ $idioma->sigla }}:titulo" id="title" value="{{ isset($row) ? $titulo[$idioma->sigla] : null }}" autofocus="autofocus">
                             </div>
                         </div>
@@ -319,7 +318,7 @@ $input_label_hidden = null;
                     <div class="row">
                         <div class="col s12 mb-1">
                             <div class="input-field">
-                                <label class="___class_+?70___">Subtítulo</label>
+                                <label>Subtítulo</label>
                                 <input type="text" name="{{ $idioma->sigla }}:subtitulo" id="subtitulo" value="{{ isset($row) ? $subtitulo[$idioma->sigla] : null }}">
                             </div>
                         </div>

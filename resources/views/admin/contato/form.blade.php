@@ -98,7 +98,7 @@ $input_label_hidden = null;
                                         <div class="input-field">
                                             <i class="material-icons prefix">corporate_fare</i>
                                             <label class="grey-text">Título do site</label>
-                                            <input type="text" name="site_title" id="site_title" value="{{ get_config('site_title') }}">
+                                            <input type="text" name="{{ $idioma->sigla }}:site_title" id="{{ $idioma->sigla }}:site_title" value="{{ tradutor(get_config('site_title'), $idioma->sigla) ?? null }}">
                                         </div>
                                     </div>
                                     <!-- END Título do Site -->
@@ -108,7 +108,7 @@ $input_label_hidden = null;
                                         <div class="input-field">
                                             <i class="material-icons prefix">notes</i>
                                             <label class="grey-text">Descrição do site</label>
-                                            <input type="url" name="site_description" id="site_description" value="{{ get_config('site_description') }}" maxlength="160">
+                                            <input type="text" name="{{ $idioma->sigla }}:site_description" id="{{ $idioma->sigla }}:site_description" value="{{ tradutor(get_config('site_description'), $idioma->sigla) }}" maxlength="160">
                                         </div>
                                     </div>
                                     <!-- END Descrição do site -->

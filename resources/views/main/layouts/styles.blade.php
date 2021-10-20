@@ -1,80 +1,32 @@
-<!-- CSS ================================================== -->
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
+<link rel='stylesheet' id='dsvy-all-gfonts-css' href='https://fonts.googleapis.com/css?family=Barlow%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%2Citalic%2Cregular%2Cregular%2C700%2C800%2C600%2C500%7CBarlow+Condensed%3A700%2C600%2C500&amp;ver=5.6.2' media='all' />
 <link rel="stylesheet" media="screen" href="{{ asset('assets/fonts/material-icons/material-icons.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/layout.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/footer.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/internas.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/lightbox.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/sss.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/embaixada/css/css3.css') }}" type="text/css">
-<link rel="stylesheet" href="{{ asset('assets/tacticweb/styles/footer.css') }}" type="text/css">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/fonts/muli/muli.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/fonts/roboto/roboto.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/fonts/icons/icons.css') }}">
 
-<!-- Favicons ================================================== -->
-<link rel="shortcut icon" href="favicon.png">
-{{-- <link rel="stylesheet" href="{{ asset('assets/styles/teste.less') }}" type="text/css"> --}}
-{{-- <link rel="stylesheet/less" type="text/css" href="styles.less" /> --}}
-{{-- <script src="//cdn.jsdelivr.net/npm/less@4.1.1" ></script> --}}
-<style>
-    .clearfix {
-        clear: both;
-    }
+<!-- styles -->
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/materializecss/materialize.min.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/animate.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}">
 
-    .geral {
-        overflow: unset;
-    }
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/datatable/v10.2/jquery.dataTables.min.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/datatable/v10.2/responsive.dataTables.min.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/datatable/v10.2/datatables.min.css') }}">
 
-    .menu_categs {
-        overflow: unset;
-        margin-top: 0;
-        padding-top: 50px;
-    }
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/quill/css/katex.min.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/quill/css/monokai-sublime.min.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/quill/css/quill.snow.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/quill/css/quill.bubble.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/animate.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/magnific-popup/magnific-popup.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/plugins/nestable/nestable.css') }}">
 
-    .menu_categs ul {
-        width: 200px;
-        overflow: unset;
-    }
+<!-- others styles -->
+<link rel="stylesheet" media="screen" href="{{ asset('assets/styles/colors.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/styles/core.css') }}">
 
-    .menu_categs ul li {
-        position: relative;
-        margin-bottom: 2px;
-    }
-
-    .menu_categs ul li a {
-        padding: 10px;
-        display: block;
-        background: #454545;
-        transition: all 200ms ease-in-out;
-        font-size: 12px;
-        text-transform: uppercase;
-    }
-
-    .menu_categs ul a:hover {
-        background: #656565
-    }
-
-    .menu_categs ul li:hover>a {
-        background: #545454;
-        padding-left: 15px;
-    }
-
-    .menu_categs ul li a i {
-        position: absolute;
-        right: 10px;
-        padding: 0;
-        top: 0;
-        bottom: 0;
-        line-height: 2.5;
-        font-size: 15px;
-    }
-
-    .menu_categs ul li ul {
-        position: absolute;
-        top: 0;
-        left: calc(100% - 0px);
-        display: none;
-    }
-
-    .menu_categs ul li:hover>ul {
-        display: block;
-    }
-
-</style>
+<!-- styles | Alerta Web -->
+<link rel="stylesheet" media="screen" href="{{ asset('assets/grupoalertaweb/plugins/icons/css/icons.css') }}">
+<link rel="stylesheet" media="screen" href="{{ asset('assets/grupoalertaweb/styles/themes/default.css') }}">

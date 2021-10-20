@@ -1,90 +1,228 @@
 @extends('main.layouts.app')
 
-@php $titulo = tradutor([
-    'en' => 'Home Page',
-    'hr' => 'Kezdőlap',
-    'pt-br' => 'Página Inicial',
-]); @endphp
+@section('main')
 
-@section('title', tradutor($titulo))
-@section('content')
+<!-- BEGIN .slider -->
+<div id="slider">
 
-<!--arte página inicial-->
-<div class="area_art">
-    <img src="{{ asset('assets/embaixada/img/arte.jpg') }}" class="img_cem">
+	<div class="slider fullscreen">
+
+		<ul class="slides">
+			<li>
+				<img src="{{ asset('assets/grupoalertaweb/uploads/2020/06/slider-02-a.jpg') }}">
+				<div class="caption mt-10">
+					<p class="right">
+						<span class="animated delay-10 fadeInUp" style="font-family: 'Barlow Condensed' !important; text-transform: uppercase; height: auto; width: auto; color: transparent; -webkit-text-stroke: 1px #fff; text-decoration: none; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; text-align: left; line-height: 80px; letter-spacing: 0px; font-weight: 700; font-size: 70px;">Força Alerta</span>
+						<br>
+						<span class="animated delay-20 fadeInDown" style="font-family: 'Barlow Condensed' !important; text-transform: uppercase; color: #fff; letter-spacing: 0px; font-weight: 700; font-size: 70px;"> Sua segurança</span>
+						<br>
+						<span class="animated delay-30 bounceInDown" style="font-family: 'Barlow Condensed' !important; text-transform: uppercase; color: #fff; background: var(--red); padding: 0 15px;; letter-spacing: 0px; font-weight: 700; font-size: 70px;">profissional</span>
+						<br>
+						<a href="#" class="btn btn-large animated delay-10 bounceInRight white b-radius-0 black-text mr-2">Saiba mais</a>
+						<a href="#" class="btn btn-large animated delay-10 bounceInLeft transparent bg-border border-2 border-white b-radius-0 ">Contrate</a>
+					</p>
+				</div>
+			</li>
+			<li>
+				<img src="{{ asset('assets/grupoalertaweb/uploads/sites/3/2020/06/slider-03-a.jpg') }}">
+				<!-- random image -->
+				<div class="caption left-align">
+					<h3>Left Aligned Caption</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="{{ asset('assets/grupoalertaweb/uploads/sites/3/2020/06/slider-01-a.jpg') }}">
+				<!-- random image -->
+				<div class="caption right-align">
+					<h3>Right Aligned Caption</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="{{ asset('assets/grupoalertaweb/uploads/sites/3/2020/06/slider-04-a.jpg') }}"> <!-- random image -->
+				<div class="caption center-align">
+					<h3>This is our big Tagline!</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+		</ul>
+	</div>
+
 </div>
+<!-- END .slider -->
 
-<!--base page-->
-<div class="base_top">
-    <img src="{{ asset('assets/embaixada/img/top_banner.png') }}" class="img_cem">
+<!-- BEGIN #quem-somos -->
+<div id="quem-somos">
+
+	<div class="container">
+
+		<div class="row pt-5 pb-5">
+
+			<div class="col s10">
+
+				<div class="row">
+
+					<div class="col s12">
+
+						<h4 class="subtitle">Quem Somos</h4>
+
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col s11">
+
+						<div class="row no-padding">
+
+							<div class="col s12 m6 l6">
+								<h2 class="title">Os melhores serviços para você e sua empresa</h2>
+							</div>
+
+							<div class="col s12 m6 l6">
+								<p class="description">
+									Atuamos no mercado de segurança e serviços nos segmentos de Segurança Eletrônica,
+									Segurança Patrimonial, Terceirização de mão de obra e Construção Civil,
+									prestando serviços no âmbito público e privado.
+									Nossa abrangência territorial são as cidades da região do Nordeste brasileiro.
+								</p>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+
+				<div class="white pt-1 pb-1 pr-2">
+
+					<div class="row">
+
+						@for($i = 1; $i <= 3; $i ++ )
+						<div class="col s4">
+							<div class="card">
+								<div class="card-content">
+									<div class="card-number">0{{ $i }}</div>
+									<div class="card-title">
+										<span class="subtitle">Responde ao ataque</span>
+										<span class="title">Perito de confiança</span>
+									</div>
+									<p>
+										Oferecemos as melhores soluções de segurança,
+										incluindo serviços de guarda e patrulhas móveis
+									</p>
+								</div>
+							</div>
+						</div>
+						@endfor
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="contact">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col s12">
+
+					<div class="title">Contrate um dos nossos
+						<br>
+						serviços
+					</div>
+
+					<div class="subtitle">0800-556-1700</div>
+
+					<a href="#">Faça um orçamento</a>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
 </div>
+<!-- END #quem-somos -->
 
-@if ($link)
-    <div class="atalhos">
+<!-- BEGIN #servicos -->
+<div id="servicos">
 
-        @foreach ($link as $ln)
-            <a href="{{ $ln->link }}">
-                <div class="bt_atalho">
-                    <div class="icon_atalho"><img src="{{ asset($ln->imagem) }}" class="img_cem"></div>
-                    <div class="txt_atalho translate">{{ tradutor($ln->descricao) }}</div>
-                </div>
-            </a>
-        @endforeach
+	<div class="container">
 
-    </div>
-@endif
+		<div class="row">
 
-@if (isset($destaques) && $destaques->count() > 0)
-    <div class="container mil-pixels">
+			<div class="col s12">
 
-        <!--novidades-->
-        <div class="area_novidades">
+				<div class="black pt-5 pb-5">
 
-            @foreach ($destaques as $news)
+					<div class="row">
 
-                {? $titulo = json_decode($news->titulo, true); ?}
-                {? $subtitulo = json_decode($news->subtitulo, true); ?}
+						<div class="col s12 center-align">
 
-                <a href="{{ route('noticias.id', $news->slug) }}">
-                    <div class="novidade">
+							<h4 class="subtitle white-text"> o que nós fazemos</h4>
 
-                        @if (!empty($news->imagem))
-                            <div class="img_novidade" style="min-height: 210px;">
-                                <img src="{{ asset($news->imagem) }}" class="img_cem">
-                            </div>
-                        @endif
+						</div>
 
-                        <span class="data">{{ date('d/m/Y h:ia', strtotime($news->date_time)) }}</span>
-                        <h3 class="title_nov" style="">{{ tradutor($titulo) }}</h3>
-                        <p class="resume_nov">{{ tradutor($subtitulo) }}</p>
+					</div>
 
-                    </div>
-                </a>
+					<div class="row">
 
-            @endforeach
+						<div class="col s4 offset-s4">
 
-        </div>
+							<h2 class="title white-text center-align">Os melhores serviços para você e sua empresa</h2>
 
-        <a href="{{ route('noticias') }}">
-            <div class="bt_vertodas">
-                {{ tradutor([
-    'en' => 'See all updates',
-    'hr' => 'Az összes frissítés megtekintése',
-    'pt-br' => 'Ver todas as atualidades',
-]) }}
-            </div>
-        </a>
+						</div>
 
-    </div>
+						<div class="col s12 mb-2"></div>
 
-@else
+					</div>
 
-    <span>{{ tradutor([
-    'en' => 'There are no news published at the moment.',
-    'hr' => 'Jelenleg nincsenek közzétett hírek.',
-    'pt-br' => 'Não há notícias publicadas no momento.',
-]) }}</span>
+					<div class="row pt-1 pb-1 pr-2">
 
-@endif
+						@for($i = 1; $i <= 3; $i ++ )
+						<div class="col s12">
+							<div class="card no-border transparent">
+								<div class="card-image">
+									<img src="{{ asset('assets/grupoalertaweb/uploads/2020/06/slider-02-a.jpg') }}" class="b-radius-0">
+								</div>
+								<div class="card-content bg-border border-1 border-grey-darken-4 mt-1">
+									<div class="card-icon">
+										<img src="{{ asset('assets/grupoalertaweb/uploads/images/icon_eletronica.png') }}" alt="">
+									</div>
+									<div class="card-title">
+										<span class="title">Perito de confiança</span>
+									</div>
+									<p>
+										Especificar, implementar e manter as soluções de segurança mais adequadas para cada um de nossos clientes,
+										e contribuir ativamente para sua segurança, seu sucesso e bem estar.
+									</p>
+								</div>
+							</div>
+						</div>
+						@endfor
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+<!-- END #servicos -->
 
 @endsection
