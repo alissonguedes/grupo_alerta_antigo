@@ -214,6 +214,8 @@
 						</div>
 						@endfor
 
+					</div>
+
 				</div>
 
 			</div>
@@ -221,8 +223,6 @@
 		</div>
 
 	</div>
-
-</div>
 <!-- END #servicos -->
 
 @endsection
