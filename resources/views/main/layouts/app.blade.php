@@ -15,40 +15,26 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="{{ config('theme_color') }}">
 		<meta name="msapplication-navbutton-color" content="{{ config('theme_color') }}">
 
-		<title>{{ tradutor(get_config('site_title')) }} - @yield('title')</title>
+		{{-- <title>{{ tradutor(get_config('site_title')) }} - @yield('title')</title> --}}
 
 		@include('main.layouts.styles')
 
 	</head>
 
-	<body>
+	<body class="home page-template-default page page-id-12263 dsvy-sidebar-no elementor-default elementor-kit-12597 elementor-page elementor-page-12263">
 
-		<div id="body">
-
-			@section('body')
-
+		<div id="page" class="site dsvy-parent-header-style-2">
 			@include('main.layouts.header')
 
-			<div id="main">
+			@section('main')
 
-				@section('main')
-
-				<div class="content-wrapper-before" style="background-image: url('@yield('img-capa')')"></div>
-
-				<div class="container">
-					@yield('container')
-				</div>
-
-				@show
-
-			</div>
-
-			@include('main.layouts.footer')
+			@yield('container')
 
 			@show
 
-			<meta name="csrf-token" content="{{ csrf_token() }}">
+			@include('main.layouts.footer')
 
+			<meta name="csrf-token" content="{{ csrf_token() }}">
 		</div>
 
 		@include('main.layouts.scripts')
