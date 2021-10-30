@@ -53,10 +53,10 @@ Route::prefix('/admin')->group(function ($admin) {
         Route::get('/', [BannersController::class, 'index'])->name('admin.banners');
         Route::get('/add', [BannersController::class, 'show_form'])->name('admin.banners.add');
         Route::get('/{id}', [BannersController::class, 'show_form'])->name('admin.banners.edit')->where('id', '[0-9]+');
-        Route::post('/', [IdiomasController::class, 'insert'])->name('admin.banners.insert');
-        Route::put('/{id}', [BannersController::class, 'update'])->name('admin.banners.put')->where('id', '[0-9]+');
-        Route::patch('/{campo}/{valor}', [BannersController::class, 'replace'])->name('admin.banners.patch')->where('id', '[0-9]+');
-        Route::delete('/', [BannersController::class, 'delete/$1'])->name('admin.banners.delete');
+        Route::post('/', [BannersController::class, 'insert'])->name('admin.banners.insert');
+        Route::put('/', [BannersController::class, 'update'])->name('admin.banners.put')->where('id', '[0-9]+');
+        Route::patch('/{campo}', [BannersController::class, 'replace'])->name('admin.banners.patch')->where('id', '[0-9]+');
+        Route::delete('/', [BannersController::class, 'delete'])->name('admin.banners.delete');
 
     });
 
@@ -66,7 +66,7 @@ Route::prefix('/admin')->group(function ($admin) {
         Route::get('/', [CategoriasController::class, 'index'])->name('admin.categorias');
         Route::get('/add', [CategoriasController::class, 'show_form'])->name('admin.categorias.add');
         Route::get('/{id}', [CategoriasController::class, 'show_form'])->name('admin.categorias.edit')->where('id', '[0-9]+');
-        Route::post('/', [IdiomasController::class, 'insert'])->name('admin.categorias.insert');
+        Route::post('/', [CategoriasController::class, 'insert'])->name('admin.categorias.insert');
         Route::put('/', [CategoriasController::class, 'update'])->name('admin.categorias.put')->where('id', '[0-9]+');
         Route::patch('/{campo}/{valor}', [CategoriasController::class, 'replace'])->name('admin.categorias.patch')->where('id', '[0-9]+');
         Route::delete('/', [CategoriasController::class, 'delete/$1'])->name('admin.categorias.delete');

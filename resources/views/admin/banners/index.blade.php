@@ -11,7 +11,7 @@
             <div class="actions action-btns flex flex-col align-itens-center">
 
                 <div class="show-buttons">
-                    <button type="button" class="btn btn-large waves-effect" data-href="{{ route('admin.noticias.add') }}" data-tooltip="Adicionar">
+                    <button type="button" class="btn btn-large waves-effect" data-href="{{ route('admin.banners.add') }}" data-tooltip="Adicionar">
                         <i class="material-icons">
                             add
                         </i>
@@ -24,11 +24,11 @@
                         <i class="material-icons">translate</i>
                     </button> --}}
 
-                    <button class="btn btn-large update waves-effect" name="status" value="0" data-tooltip="" data-on="Bloquear" data-off="Desbloquear" data-link="{{ route('admin.noticias.patch', 'status') }}" data-method="patch">
+                    <button class="btn btn-large update waves-effect" name="status" value="0" data-tooltip="" data-on="Bloquear" data-off="Desbloquear" data-link="{{ route('admin.banners.patch', 'status') }}" data-method="patch">
                         <i class="material-icons" data-on="lock" data-off="lock_open"></i>
                     </button>
 
-                    <button class="btn btn-large excluir waves-effect" disabled="disabled" data-link="{{ route('admin.noticias.delete') }}" style="border: none" data-tooltip="Excluir">
+                    <button class="btn btn-large excluir waves-effect" disabled="disabled" data-link="{{ route('admin.banners.delete') }}" style="border: none" data-tooltip="Excluir">
                         <i class="material-icons">delete_forever</i>
                     </button>
 
@@ -44,7 +44,7 @@
 
         <div class="content">
 
-            <table class="table dataTable no-footer" data-link="{{ route('admin.noticias') }}">
+            <table class="table dataTable no-footer" data-link="{{ route('admin.banners') }}">
                 <thead>
                     <tr>
                         <th class="disabled sortable white-text" width="1%" data-orderable="false">

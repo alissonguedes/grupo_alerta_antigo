@@ -19,11 +19,11 @@
                      Dashboard
                  </a>
              </li>
-             {{-- <li>
+             <li>
                  <a href="{{ route('admin.banners') }}">
                      Banners
                  </a>
-             </li> --}}
+             </li>
              <li>
                  <a href="{{ route('admin.menus') }}">
                      Menus do site

@@ -12,11 +12,11 @@
                     <span></span>
                 </label>
             </td>
-            <td>{{ $row->descricao }}</td>
+            <td>{{ $row->titulo }}</td>
             <td class="center-align"><i class="material-icons">{{ $row->status === '0' ? 'lock' : 'check' }}</i>
             </td>
             <td class="center-align" data-disabled="true">
-                <button data-href="{{ route('admin.paginas.edit', $row->id) }}" class="btn btn-flat btn-edit btn-floating float-none">
+                <button data-href="{{ route('admin.banners.edit', $row->id) }}" class="btn btn-flat btn-edit btn-floating float-none">
                 </button>
             </td>
         </tr>

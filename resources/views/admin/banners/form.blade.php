@@ -19,17 +19,17 @@ $input_label_hidden = null;
 
 @endif
 
-@section('title', (isset($row) ? 'Editar' : 'Novo') . ' notícia')
+@section('title', (isset($row) ? 'Editar' : 'Novo') . ' banner')
 
 @section('buttons')
     @if (isset($row))
-        <button class="btn btn-large excluir waves-effect" value="{{ isset($row) ? $row->id : null }}" data-tooltip="Excluir" data-link="{{ route('admin.noticias.delete') }}" style="border: none">
+        <button class="btn btn-large excluir waves-effect" value="{{ isset($row) ? $row->id : null }}" data-tooltip="Excluir" data-link="{{ route('admin.banners.delete') }}" style="border: none">
             <i class="material-icons">delete_forever</i>
         </button>
     @endif
 @endsection
 
-@section('tabs')
+{{-- @section('tabs')
     <ul class="tabs">
         <li class="tab"><a href="#informations">Informações</a></li>
         @foreach ($idiomas as $idioma)
@@ -38,11 +38,11 @@ $input_label_hidden = null;
             </li>
         @endforeach
     </ul>
-@endsection
+@endsection --}}
 
 @section('form')
 
-    <form method="post" action="{{ route('admin.noticias.insert') }}" novalidate enctype="multipart/form-data" autocomplete="off">
+    <form method="post" action="{{ route('admin.banners.insert') }}" novalidate enctype="multipart/form-data" autocomplete="off">
 
         <!-- Informações -->
         <div id="informations">
@@ -51,49 +51,33 @@ $input_label_hidden = null;
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="input-field">
-                        <label>Nome da notícia</label>
-                        <input type="text" name="descricao" id="descricao" value="{{ isset($row) ? $row->descricao : null }}" autofocus="autofocus">
+                        <label>Título do banner</label>
+                        <input type="text" name="titulo" id="titulo" value="{{ isset($row) ? $row->titulo : null }}" autofocus="autofocus">
                     </div>
                 </div>
             </div>
             <!-- END título -->
 
-            <!-- BEGIN Idioma -->
+            <!-- BEGIN descrição -->
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="input-field">
-                        <label>Idioma Padrão da notícia</label>
-                        <select name="idioma">
-                            <option value="" disabled="disabled" selected="selected">Selecione o idioma padrão
-                                da notícia</option>
-                            @foreach ($idiomas as $lang)
-                                <option value="{{ $lang->sigla }}" {{ configuracoes('language') === $lang->sigla || (isset($row) && $row->idioma == $lang->sigla) ? 'selected="selected"' : null }}>{{ $lang->descricao . ' (' . $lang->sigla . ')' }}</option>
-                            @endforeach
-                        </select>
+                        <label>Descrição</label>
+                        <input type="text" name="descricao" id="descricao" value="{{ isset($row) && !is_null($row->descricao) ? $row->descricao : null }}">
                     </div>
                 </div>
             </div>
-            <!-- END Idioma -->
+            <!-- END descrição -->
 
             <!-- BEGIN imagem de capa -->
             <div class="row">
                 <div class="col s12 mb-1">
-                    {{-- <div class="input-field files input">
-					<div class="nome_arquivo" data-placeholder="Selecione um arquivo"></div>
-					<button type="button" class="btn btn-large waves-effect redefinir" style="{{ isset($row) && !empty($row->imagem) ? 'display: none;' : '' }}">
-				<i class="material-icons">undo</i>
-				</button>
-				<button type="button" class=" btn btn-large btn_add_new_image waves-effect image_alt amber">
-					<i class="material-icons">upload</i>
-				</button>
-				<input type="file" name="arquivo[]" id="img_perfil" multiple>
-			</div> --}}
                     <div class="file-field input-field">
                         <div class="btn">
                             <div class="file">
                                 <i class="material-icons">attach_file</i>
                             </div>
-                            <input type="file" name="arquivo[]" multiple="multiple">
+                            <input type="file" name="imagem">
                         </div>
                         <div class="file-path-wrapper">
                             <input type="text" class="file-path validate" placeholder="Selecione um arquivo">
@@ -124,7 +108,7 @@ $input_label_hidden = null;
         </div>
         <!-- END Informações -->
 
-        <!-- BEGIN Idiomas -->
+        {{-- <!-- BEGIN Idiomas -->
         <div id="idiomas">
 
             @foreach ($idiomas as $idioma)
@@ -167,7 +151,7 @@ $input_label_hidden = null;
                     <div class="row">
                         <div class="col s12 mb-1">
                             <div class="input-field">
-                                <textarea name="{{ $idioma->sigla }}:texto" class="editor full--editor" placeholder="Texto da notícia" style="min-height: 600px !important;"><?= isset($row) && !is_null($texto) ? $texto[$idioma->sigla] : null ?></textarea>
+                                <textarea name="{{ $idioma->sigla }}:texto" class="editor full--editor" placeholder="Texto da banner" style="min-height: 600px !important;"><?= isset($row) && !is_null($texto) ? $texto[$idioma->sigla] : null ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -177,7 +161,7 @@ $input_label_hidden = null;
             @endforeach
 
         </div>
-        <!-- END Idiomas -->
+        <!-- END Idiomas --> --}}
 
         <div class="row">
 
