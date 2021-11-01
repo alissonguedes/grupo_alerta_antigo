@@ -15,7 +15,7 @@
         <div class="login-form padding-3 col s12 m5 l4 xl3">
 
             <div id="logo-cliente">
-                <img src="{{ asset(get_config('site_logo')) }}" alt="asdf">
+                <img src="{{ asset(get_config('site_logo')) }}" alt="" style="max-width: 100%;">
             </div>
 
             <div id="boas-vindas" class="vertical-align no-padding">
@@ -27,8 +27,7 @@
                 </h5>
             </div>
 
-            <form novalidate id="frm-login" class="" action="{{ route('admin.auth.login') }}" method="post"
-                enctype="multipart/form-data" autocomplete="off">
+            <form novalidate id="frm-login" class="" action="{{ route('admin.auth.login') }}" method="post" enctype="multipart/form-data" autocomplete="off">
 
                 <div class="form">
 
@@ -47,8 +46,7 @@
 
                     <div id="input-pass" class="slow">
                         <div class="input-field">
-                            <input type="password" name="senha" id="senha" disabled="disabled" autofocus="autofocus"
-                                minlength="5">
+                            <input type="password" name="senha" id="senha" disabled="disabled" autofocus="autofocus" minlength="5">
                             <label for="pass">
                                 Senha
                             </label>
@@ -61,8 +59,7 @@
 
                 </div>
 
-                <button type="submit" id="entrar" name="entrar"
-                    class="btn btn-small waves-effect waves-light right mb-2 next">
+                <button type="submit" id="entrar" name="entrar" class="btn btn-small waves-effect waves-light right mb-2 next">
                     Próximo
                     <i class="material-icons margin-left">input</i>
                 </button>
