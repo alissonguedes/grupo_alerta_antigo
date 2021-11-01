@@ -138,7 +138,6 @@ class ConfigModel extends Authenticatable
         foreach($data as $conf) {
 
             $issetConfig = $this->select('config', 'value')->where('config', $conf['config'])->first();
-print_r($conf);
 
             if (isset($issetConfig)) {
                 if ($conf != $issetConfig->value) {
