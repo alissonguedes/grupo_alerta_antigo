@@ -35,6 +35,11 @@
                  </a>
              </li>
              <li>
+                 <a href="{{ route('admin.clientes') }}">
+                     Clientes
+                 </a>
+             </li>
+             <li>
                  <a href="{{ route('admin.noticias') }}">
                      Notícias
                  </a>

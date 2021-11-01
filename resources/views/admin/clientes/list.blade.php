@@ -12,14 +12,11 @@
                     <span></span>
                 </label>
             </td>
-            <td>
-                <img src="{{ asset($row->imagem) }}" alt="" width="50">
-            </td>
-            <td>{{ $row->titulo }}</td>
+            <td>{{ $row->nome }}</td>
             <td class="center-align"><i class="material-icons">{{ $row->status === '0' ? 'lock' : 'check' }}</i>
             </td>
             <td class="center-align" data-disabled="true">
-                <button data-href="{{ route('admin.banners.edit', $row->id) }}" class="btn btn-flat btn-edit btn-floating float-none">
+                <button data-href="{{ route('admin.clientes.edit', $row->id) }}" class="btn btn-flat btn-edit btn-floating float-none">
                 </button>
             </td>
         </tr>
@@ -34,6 +31,13 @@
                     <i class="material-icons">keyboard_arrow_left</i>
                 </button>
             </li>
+
+            {{-- @for ($i = 1; $i <= $paginate->lastPage(); $i++)
+	{? $class = ($i === $paginate -> currentPage() ) ? 'active' : null ?}
+	<li>
+		<button data-href="{{ $paginate->currentPage() !== $i ? $paginate->url($i) : '#' }}" class="btn btn-small btn-floating waves-effect {{ $class }}">{{ $i }}</button>
+	</li>
+@endfor --}}
 
             <li>
                 <button class="btn btn-flat btn-floating waves-effect" data-href="{{ $paginate->currentPage() < $paginate->lastPage() ? $paginate->nextPageUrl() : '#' }}" data-tooltip="Próxima" {{ $paginate->currentPage() === $paginate->lastPage() ? 'disabled' : null }}>

@@ -66,7 +66,7 @@ class BannerModel extends Authenticatable
             $get->where(function ($get) {
                 $search = $_GET['search']['value'];
                 $get->orWhere('id', 'like', $search . '%')
-                    ->orWhere('label', 'like', $search . '%')
+                    ->orWhere('titulo', 'like', $search . '%')
                     ->orWhere('status', 'like', $search . '%');
             });
         }

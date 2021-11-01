@@ -73,9 +73,11 @@ $input_label_hidden = null;
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="file-field input-field">
-                        <div class="btn">
+                        <div class="btn" style="background-image: url({{ isset($row) && isset($row->imagem) ? asset($row->imagem) : null }}); background-size: cover;">
                             <div class="file">
-                                <i class="material-icons">attach_file</i>
+                                @if (!isset($row))
+                                    <i class="material-icons">attach_file</i>
+                                @endif
                             </div>
                             <input type="file" name="imagem">
                         </div>

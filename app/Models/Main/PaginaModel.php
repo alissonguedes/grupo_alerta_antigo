@@ -62,7 +62,7 @@ namespace App\Models\Main {
 
         }
 
-        public function getSubPages($id_menu, $page = null, $idioma = null)
+        public function getSubPages($id_menu = null, $page = null, $idioma = null)
         {
 
             $get = $this->select('P.id AS id_pagina', 'P.id_menu', 'M.link', 'P.id_pagina AS id_parent', 'P.titulo', 'P.descricao AS titulo_principal', 'P.slug')
@@ -70,7 +70,8 @@ namespace App\Models\Main {
                 ->join('tb_acl_menu AS M', 'M.id', '=', 'P.id_menu')
                 ->where('P.status', '1');
 
-            $get->where('P.id_menu', $id_menu);
+            if ( !is_null($id_menu))
+                $get->where('P.id_menu', $id_menu);
 
             $page = !is_null($page) ? $page : 0;
 
@@ -80,7 +81,7 @@ namespace App\Models\Main {
                 $get->limit($this->limit);
             }
 
-            $this->orderBy('descricao', 'asc');
+            $get->orderBy('M.id', 'asc');
 
             return $get->get();
 
@@ -143,7 +144,7 @@ namespace App\Models\Main {
         public function getMenus()
         {
 
-            return $this->select('label', 'traducao', 'link')
+            return $this->select('id', 'id_parent', 'label', 'link')
                 ->from('tb_acl_menu')
                 ->where('id_secao', '2')
                 ->where('status', '1')

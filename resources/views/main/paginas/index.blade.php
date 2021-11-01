@@ -1,12 +1,12 @@
 @extends('main.layouts.app')
 
-@if (!isset($row)) {
+@if (!isset($row))
     {{ exit(view('main.paginas.404')) }}
 @endif
 
 @section('title', tradutor($row->titulo))
 
-@section('content')
+@section('main')
 
     <div class="title_pg">{{ tradutor($row->titulo) }}</div>
 
@@ -19,6 +19,8 @@
         </div>
 
         <div class="container2">
+
+        asdfasdf
 
             {? $data_add = $row -> created_at; ?}
             {? $data_upd = $row -> updated_at; ?}

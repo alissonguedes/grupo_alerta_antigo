@@ -10,9 +10,10 @@
         <rs-module id="rev_slider_1_1" style="" data-version="6.3.5">
             <rs-slides>
 
+                @foreach($banners as $slide )
                 <!--início conjunto slide-->
-                <rs-slide data-key="rs-1" data-title="Slide" data-thumb="{{ asset('assets/grupoalertaweb/wp-content/uploads/sites/3/2020/06/slider-02-a.jpg') }}" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
-                    <img src="{{ asset('assets/grupoalertaweb/wp-content/uploads/sites/3/2020/06/slider-02-a.jpg') }}" title="slider-02-a" width="1920" height="950" data-bg="p:center top;" class="rev-slidebg" data-no-retina>
+                <rs-slide data-key="rs-1" data-title="Slide" data-thumb="{{ asset($slide->imagem) }}" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+                    <img src="{{ asset($slide->imagem) }}" title="slider-02-a" width="1920" height="950" data-bg="p:center top;" class="rev-slidebg" data-no-retina>
                     <rs-layer id="slider-1-slide-1-layer-0" data-type="text" data-rsp_ch="on" data-xy="xo:681px,681px,370px,220px;yo:474px,474px,243px,240px;" data-text="s:70,70,50,30;l:80,80,55,34;fw:700;" data-frame_0="x:-50,-50,-31,-19;" data-frame_1="st:1190;sp:1000;sR:1190;" data-frame_999="o:0;st:w;sR:6810;" style="z-index:10;font-family:Barlow Condensed;text-transform:uppercase;">
                         Sua segurança
                     </rs-layer>
@@ -34,10 +35,10 @@
                     </rs-layer>
                 </rs-slide>
                 <!--fim conjunto slide-->
+                @endforeach
 
 
-
-                <!--início conjunto slide-->
+                {{-- <!--início conjunto slide-->
                 <rs-slide data-key="rs-2" data-title="Slide" data-thumb="{{ asset('assets/grupoalertaweb/wp-content/uploads/sites/3/2020/06/slider-03-a.jpg') }}" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
                     <img src="{{ asset('assets/grupoalertaweb/wp-content/uploads/sites/3/2020/06/slider-03-a.jpg') }}" title="slider-02-a" width="1920" height="950" data-bg="p:center top;" class="rev-slidebg" data-no-retina>
 
@@ -104,7 +105,7 @@
                     <rs-layer id="slider-1-slide-3-layer-18" class="rev-btn" data-type="button" data-rsp_ch="on" data-xy="xo:858px,858px,512px,315px;yo:667px,667px,371px,228px;" data-text="w:normal;s:13,13,13,8;l:51,51,50,30;ls:1px,1px,1px,0px;fw:700;" data-dim="minh:0px,0px,none,none;" data-vbility="t,t,t,f" data-padding="r:40,40,25,15;l:40,40,25,15;" data-border="bos:solid;boc:#ffffff;bow:2px,2px,2px,2px;" data-frame_0="y:50,50,31,19;" data-frame_1="st:2530;sp:1000;sR:2530;" data-frame_999="o:0;st:w;sR:5470;" data-frame_hover="c:#fff;bgc:#e10000;boc:#e10000;bor:0px,0px,0px,0px;bos:solid;bow:2px,2px,2px,2px;" style="z-index:13;background-color:rgba(255,255,255,0);font-family:Barlow;text-transform:uppercase;">CONTRATE
                     </rs-layer>
                 </rs-slide>
-                <!--fim conjunto slide-->
+                <!--fim conjunto slide--> --}}
 
 
             </rs-slides>
