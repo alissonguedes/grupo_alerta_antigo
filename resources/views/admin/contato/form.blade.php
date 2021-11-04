@@ -333,7 +333,7 @@ $input_label_hidden = null;
                 <div class="col s12">
 
                     <!-- BEGIN card.bg-opacity -->
-                    <div class="card bg-opacity-1">
+                    <div id="endereco" class="card bg-opacity-1">
 
                         <!-- BEGIN card-content -->
                         <div class="card-content padding-6">
@@ -439,18 +439,20 @@ $input_label_hidden = null;
                             <div class="row">
 
                                 <!-- Maps -->
-                                <div class="col s11 pl-0">
-                                    <div class="input-field">
+                                <div id="btn-iframe" class="col s12 pl-0 pr-0">
+                                    <div class="input-field left col s11 pl-0">
                                         <label class="grey-text">Mapa</label>
                                         <input type="text" name="gmaps" id="gmaps" value="{{ get_config('gmaps') }}">
+                                    </div>
+                                    <div class="col s1 right right-align pr-0 pt-4">
+                                        <button type="button" class="btn right btn-floating padding-4 waves-effect activator" id="preview" data-tooltip="Ver o mapa" disabled="disabled">
+                                            <i class="material-icons grey-text">more_vert</i>
+                                        </button>
                                     </div>
                                 </div>
                                 <!-- END Maps -->
 
-                                <div class="col s1 mt-2">
-                                    <button type="button" class="btn btn-floating padding-4 waves-effect activator" id="preview" data-tooltip="Ver o mapa" disabled="disabled">
-                                        <i class="material-icons grey-text">more_vert</i>
-                                    </button>
+                                <div class="col s1">
                                 </div>
 
                             </div>
@@ -460,7 +462,7 @@ $input_label_hidden = null;
                         <!-- END card-content -->
 
                         <div class="card-reveal">
-                            <button type="button" class="btn btn-floating card-title grey-text text-darken-4 waves-effect waves-light">
+                            <button type="button" class="btn btn-floating right card-title grey-text text-darken-4 black waves-effect waves-light" data-tooltip="Fechar o mapa">
                                 <i class="material-icons">close</i>
                             </button>
                             <div id="iframe"></div>
