@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 1200px;
     border: 1px dashed #ccc;
     padding: 0;
 }

@@ -121,6 +121,7 @@ function core() {
 	//     });
 	// });
 	// botão voltar para esconder o formulário da página de e-mail
+	$('.modal').modal();
 
 	$(".btn-back").each(function() {
 		$(this).bind("click", function() {
