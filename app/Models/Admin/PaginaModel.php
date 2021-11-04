@@ -97,12 +97,12 @@ class PaginaModel extends Authenticatable
         $data = [
             'id_pagina' => isset($request->grupo) ? $request->grupo : 0,
             'id_menu' => $request->menu,
-            'descricao' => $request->descricao,
-            'slug' => limpa_string($request->descricao),
-            'titulo' => null,
+            'titulo' => $request->titulo,
+            'slug' => limpa_string($request->titulo),
             'subtitulo' => null,
-            'texto' => null,
-            'idioma' => $request->idioma,
+            'descricao' => $request->descricao,
+            'texto' => $request->texto,
+            'idioma' => get_config('language'),
             'status' => isset($request->status) ? $request->status : '0',
         ];
 
@@ -119,9 +119,9 @@ class PaginaModel extends Authenticatable
             $data['arquivo'] = $path . $arquivo;
         }
 
-        $data['titulo'] = json_encode($traducao['titulo']);
-        $data['subtitulo'] = json_encode($traducao['subtitulo']);
-        $data['texto'] = json_encode($traducao['texto']);
+        // $data['titulo'] = json_encode($traducao['titulo']);
+        // $data['subtitulo'] = json_encode($traducao['subtitulo']);
+        // $data['texto'] = json_encode($traducao['texto']);
 
         if ($id = $this->insertGetId($data)) {
 
@@ -183,7 +183,7 @@ class PaginaModel extends Authenticatable
 
     public function getGrupo($id = null)
     {
-        $pag = $this->select('id', 'id_pagina', 'descricao')
+        $pag = $this->select('id', 'id_pagina', 'titulo')
             ->from('tb_pagina');
 
         if (!is_null($id)) {
@@ -260,13 +260,13 @@ class PaginaModel extends Authenticatable
             $data = [
                 'id_pagina' => isset($request->grupo) ? $request->grupo : 0,
                 'id_menu' => $request->menu,
-                'tipo' => $request->tipo_pagina ?? 'post',
-                'descricao' => $request->descricao,
-                'slug' => limpa_string($request->descricao),
-                'titulo' => null,
+                'titulo' => $request->titulo,
+                'slug' => limpa_string($request->titulo),
                 'subtitulo' => null,
-                'texto' => null,
-                'idioma' => $request->idioma,
+                'descricao' => $request->descricao,
+                'tipo' => $request->tipo_pagina ?? 'post',
+                'texto' => $request->texto,
+                'idioma' => get_config('language'),
                 'status' => isset($request->status) ? $request->status : '0',
             ];
 
@@ -277,9 +277,9 @@ class PaginaModel extends Authenticatable
                 }
             }
 
-            $data['titulo'] = json_encode($traducao['titulo']);
-            $data['subtitulo'] = json_encode($traducao['subtitulo']);
-            $data['texto'] = json_encode($traducao['texto']);
+            // $data['titulo'] = json_encode($traducao['titulo']);
+            // $data['subtitulo'] = json_encode($traducao['subtitulo']);
+            // $data['texto'] = json_encode($traducao['texto']);
 
             return $this->where('id', $request->id)->update($data);
 

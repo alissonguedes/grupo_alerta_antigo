@@ -37,9 +37,9 @@
         <div class="col xl4 l4 m6 s6">
             <div class="card bordered">
                 <div class="card-content no-padding">
-                    <a href="{{ route('admin.produtos') }}" class="waves-effect waves-light">
-                        <span class="card-title">Serviços Cadastrados</span>
-                        <p>{{ $total_produtos }}</p>
+                    <a href="{{ route('admin.clientes') }}" class="waves-effect waves-light">
+                        <span class="card-title">Clientes Cadastrados</span>
+                        <p>{{ $total_clientes }}</p>
                     </a>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                 <div class="card-content no-padding">
                     <a href="{{ route('admin.categorias') }}" class="waves-effect waves-light">
                         <span class="card-title">Categorias Cadastradas</span>
-                        <p>{{ $total_categorias }}</p>
+                        <p>{{ $total_produtos }}</p>
                     </a>
                 </div>
             </div>

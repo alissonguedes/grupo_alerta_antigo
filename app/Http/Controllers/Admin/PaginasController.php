@@ -83,9 +83,9 @@ class PaginasController extends Controller
         }
 
         $request->validate([
-            'descricao' => ['required', 'unique:tb_pagina,descricao', 'max:255'],
+            'titulo' => ['required', 'unique:tb_pagina,descricao', 'max:255'],
             'menu' => ['required'],
-            'idioma' => ['required'],
+            'texto' => ['required'],
         ]);
 
         $url = url('admin/paginas ');
@@ -115,9 +115,9 @@ class PaginasController extends Controller
         }
 
         $request->validate([
-            'descricao' => ['required', Rule::unique('tb_pagina', 'descricao')->ignore($_POST['id'], 'id'), 'max:255'],
+            'titulo' => ['required', Rule::unique('tb_pagina', 'descricao')->ignore($_POST['id'], 'id'), 'max:255'],
             'menu' => ['required'],
-            'idioma' => ['required'],
+            'texto' => ['required'],
         ]);
 
         $request->validate([
@@ -256,7 +256,7 @@ class PaginasController extends Controller
 
                 $ul .= '<div class="dd-handle dd3-handle"></div>';
                 $ul .= '<div class="dd-content">';
-                $ul .= $m->descricao;
+                $ul .= $m->titulo;
                 $ul .= '<button class="btn btn-small btn-flat btn-floating" style="margin-top: 0 !important;" data-href="' . route('admin.paginas.edit', $m->id_pagina) . '"><i class="material-icons">edit</i></button></div>';
 
                 $ul .= $this->getPaginas($id_menu, $m->id_pagina);

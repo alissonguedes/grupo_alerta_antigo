@@ -46,13 +46,13 @@ $input_label_hidden = null;
                             Salvar Tudo
                         </button>
 
-                        <ul class="tabs">
+                        {{-- <ul class="tabs">
                             @foreach ($idiomas as $idioma)
                                 <li class="tab">
                                     <a href="#{{ limpa_string($idioma->sigla, '') }}">{{ $idioma->descricao }}</a>
                                 </li>
                             @endforeach
-                        </ul>
+                        </ul> --}}
 
                     </div>
 
@@ -77,44 +77,25 @@ $input_label_hidden = null;
                         <!-- BEGIN card-content -->
                         <div class="card-content padding-6">
 
-                            @foreach ($idiomas as $idioma)
-
-                                <div id="{{ limpa_string($idioma->sigla, '') }}" class="___class_+?22___">
-
-                                    {? $titulo = isset($row) && !empty($row -> titulo) ? json_decode($row -> titulo, true) : null; ?}
-                                    {? $subtitulo = isset($row) && !empty($row -> subtitulo) ? json_decode($row -> subtitulo, true) : null; ?}
-                                    {? $texto = isset($row) && !empty($row -> texto) ? json_decode($row -> texto, true) : null; ?}
-
-                                    <div class="row">
-                                        <h3 class="card-title white-text">
-                                            <i class="material-icons left">public</i>
-                                            Site <br><small class="amber-text">IDIOMA:
-                                                {{ $idioma->descricao }}</small>
-                                        </h3>
-                                    </div>
-
-                                    <!-- BEGIN Título do Site -->
-                                    <div class="row">
-                                        <div class="input-field">
-                                            <i class="material-icons prefix">corporate_fare</i>
-                                            <label class="grey-text">Título do site</label>
-                                            <input type="text" name="{{ $idioma->sigla }}:site_title" id="{{ $idioma->sigla }}:site_title" value="{{ tradutor(get_config('site_title'), $idioma->sigla) ?? null }}">
-                                        </div>
-                                    </div>
-                                    <!-- END Título do Site -->
-
-                                    <!-- BEGIN Descrição do site -->
-                                    <div class="row">
-                                        <div class="input-field">
-                                            <i class="material-icons prefix">notes</i>
-                                            <label class="grey-text">Descrição do site</label>
-                                            <input type="text" name="{{ $idioma->sigla }}:site_description" id="{{ $idioma->sigla }}:site_description" value="{{ tradutor(get_config('site_description'), $idioma->sigla) }}" maxlength="160">
-                                        </div>
-                                    </div>
-                                    <!-- END Descrição do site -->
-
+                            <!-- BEGIN Título do Site -->
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">corporate_fare</i>
+                                    <label class="grey-text">Título do site</label>
+                                    <input type="text" name="site_title" id="site_title" value="{{ get_config('site_title') }}">
                                 </div>
-                            @endforeach
+                            </div>
+                            <!-- END Título do Site -->
+
+                            <!-- BEGIN Descrição do site -->
+                            <div class="row">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">notes</i>
+                                    <label class="grey-text">Descrição do site</label>
+                                    <input type="text" name="site_description" id="site_description" value="{{ get_config('site_description') }}" maxlength="160">
+                                </div>
+                            </div>
+                            <!-- END Descrição do site -->
 
                             <!-- BEGIN Domínio -->
                             <div class="row">
@@ -145,6 +126,29 @@ $input_label_hidden = null;
 
                             <!-- BEGIN site_logo -->
                             <div class="row">
+                                <div class="col s12 mb-1">
+                                    <div class="file-field input-field">
+                                        {{-- style="background-image: url({{ asset(get_config('site_logo')) }}); background-size: cover;" --}}
+                                        <div class="btn">
+                                            <div class="file">
+                                                @if (!isset($row))
+                                                    <i class="material-icons">attach_file</i>
+                                                @endif
+                                            </div>
+                                            <input type="file" name="imagem">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input type="text" class="file-path validate" placeholder="Selecione um arquivo">
+                                        </div>
+                                    </div>
+                                    <div class="z-depth-4 material-icons">
+                                        @if (!empty(get_config('site_logo')))
+                                            <img src="{{ asset(get_config('site_logo')) }}" class="img_cem materialboxed original" width="100%">
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div class="row">
                                 <div class="input-field media conj_img_edit">
                                     <div class="img_icon_pdf image_view z-depth-4 material-icons">
                                         @if (!empty(get_config('site_logo')))
@@ -161,7 +165,7 @@ $input_label_hidden = null;
                                     </div>
                                     <input type="file" name="site_logo" id="img_perfil" accept="image">
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- END site_logo -->
 
                             <!-- BEGIN Tags do site -->
@@ -329,7 +333,7 @@ $input_label_hidden = null;
                 <div class="col s12">
 
                     <!-- BEGIN card.bg-opacity -->
-                    <div class="card bg-opacity-1">
+                    <div id="endereco" class="card bg-opacity-1">
 
                         <!-- BEGIN card-content -->
                         <div class="card-content padding-6">
@@ -435,18 +439,20 @@ $input_label_hidden = null;
                             <div class="row">
 
                                 <!-- Maps -->
-                                <div class="col s11 pl-0">
-                                    <div class="input-field">
+                                <div id="btn-iframe" class="col s12 pl-0 pr-0">
+                                    <div class="input-field left col s11 pl-0">
                                         <label class="grey-text">Mapa</label>
                                         <input type="text" name="gmaps" id="gmaps" value="{{ get_config('gmaps') }}">
+                                    </div>
+                                    <div class="col s1 right right-align pr-0 pt-4">
+                                        <button type="button" class="btn right btn-floating padding-4 waves-effect activator" id="preview" data-tooltip="Ver o mapa" disabled="disabled">
+                                            <i class="material-icons grey-text">more_vert</i>
+                                        </button>
                                     </div>
                                 </div>
                                 <!-- END Maps -->
 
-                                <div class="col s1 mt-2">
-                                    <button type="button" class="btn btn-floating padding-4 waves-effect activator" id="preview" data-tooltip="Ver o mapa" disabled="disabled">
-                                        <i class="material-icons grey-text">more_vert</i>
-                                    </button>
+                                <div class="col s1">
                                 </div>
 
                             </div>
@@ -456,7 +462,7 @@ $input_label_hidden = null;
                         <!-- END card-content -->
 
                         <div class="card-reveal">
-                            <button type="button" class="btn btn-floating card-title grey-text text-darken-4 waves-effect waves-light">
+                            <button type="button" class="btn btn-floating right card-title grey-text text-darken-4 black waves-effect waves-light" data-tooltip="Fechar o mapa">
                                 <i class="material-icons">close</i>
                             </button>
                             <div id="iframe"></div>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin {
 
+	use App\Models\Admin\BannerModel;
+	use App\Models\Admin\ClienteModel;
 	use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Session;
 
@@ -18,8 +20,8 @@ namespace App\Http\Controllers\Admin {
 					return redirect() -> route('admin.auth.login');
 			}
 
-			$dados['total_banners'] = 0;
-			$dados['total_categorias'] = 0;
+			$dados['total_banners'] = BannerModel::count();
+			$dados['total_clientes'] = ClienteModel::count();
 			$dados['total_produtos'] = 0;
 			$dados['total_intencoes'] = 0;
 			$dados['total_distribuidores'] = 0;

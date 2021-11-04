@@ -19,11 +19,11 @@
                      Dashboard
                  </a>
              </li>
-             {{-- <li>
+             <li>
                  <a href="{{ route('admin.banners') }}">
                      Banners
                  </a>
-             </li> --}}
+             </li>
              <li>
                  <a href="{{ route('admin.menus') }}">
                      Menus do site
@@ -32,6 +32,11 @@
              <li>
                  <a href="{{ route('admin.paginas') }}">
                      Páginas
+                 </a>
+             </li>
+             <li>
+                 <a href="{{ route('admin.clientes') }}">
+                     Clientes
                  </a>
              </li>
              <li>

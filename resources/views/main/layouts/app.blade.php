@@ -15,12 +15,17 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="{{ config('theme_color') }}">
     <meta name="msapplication-navbutton-color" content="{{ config('theme_color') }}">
 
+<<<<<<< HEAD
     <title>{{ tradutor(get_config('site_title')) }} - @yield('title')</title>
+=======
+		{{-- <title>{{ tradutor(get_config('site_title')) }} - @yield('title')</title> --}}
+>>>>>>> 5853bdbcf1310d51c22bc720caee952306ea3bdc
 
     @include('main.layouts.styles')
 
 </head>
 
+<<<<<<< HEAD
 <body>
 
     <div id="body">
@@ -48,14 +53,31 @@
                 @endfor
 
             @show
+=======
+	<body class="home page-template-default page page-id-12263 dsvy-sidebar-no elementor-default elementor-kit-12597 elementor-page elementor-page-12263">
+
+		<div id="page" class="site dsvy-parent-header-style-2">
+			@include('main.layouts.header')
+
+			@section('main')
+
+			@yield('container')
+
+			@show
+>>>>>>> 5853bdbcf1310d51c22bc720caee952306ea3bdc
 
         </div>
 
+<<<<<<< HEAD
         @include('main.layouts.footer')
 
     @show
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+=======
+			<meta name="csrf-token" content="{{ csrf_token() }}">
+		</div>
+>>>>>>> 5853bdbcf1310d51c22bc720caee952306ea3bdc
 
 </div>
 

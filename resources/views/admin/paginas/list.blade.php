@@ -12,7 +12,7 @@
                     <span></span>
                 </label>
             </td>
-            <td>{{ $row->descricao }}</td>
+            <td>{{ $row->titulo }}</td>
             <td class="center-align"><i class="material-icons">{{ $row->status === '0' ? 'lock' : 'check' }}</i>
             </td>
             <td class="center-align" data-disabled="true">

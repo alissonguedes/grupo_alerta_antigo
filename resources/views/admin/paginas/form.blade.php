@@ -29,7 +29,7 @@ $input_label_hidden = null;
     @endif
 @endsection
 
-@section('tabs')
+{{-- @section('tabs')
     <ul class="tabs">
         <li class="tab"><a href="#informations">Informações</a></li>
         @foreach ($idiomas as $idioma)
@@ -38,7 +38,7 @@ $input_label_hidden = null;
             </li>
         @endforeach
     </ul>
-@endsection
+@endsection --}}
 
 @section('form')
 
@@ -51,8 +51,19 @@ $input_label_hidden = null;
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="input-field">
-                        <label>Nome da página</label>
-                        <input type="text" name="descricao" id="descricao" value="{{ isset($row) ? $row->descricao : null }}" autofocus="autofocus">
+                        <label>Título</label>
+                        <input type="text" name="titulo" id="title" value="{{ isset($row) ? $row->titulo : null }}" autofocus="autofocus">
+                    </div>
+                </div>
+            </div>
+            <!-- END título -->
+
+            <!-- BEGIN título -->
+            <div class="row">
+                <div class="col s12 mb-1">
+                    <div class="input-field">
+                        <label>Descrição da página</label>
+                        <input type="text" name="descricao" id="descricao" value="{{ isset($row) ? $row->descricao : null }}">
                     </div>
                 </div>
             </div>
@@ -78,13 +89,13 @@ $input_label_hidden = null;
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="input-field">
-                        <label>Grupo</label>
+                        <label>Grupo da página</label>
                         <select name="grupo">
                             <option value="" disabled="disabled" {{ !isset($row) ? 'selected' : null }}>Selecione o grupo da página</option>
                             <option value="0" {{ isset($row) && $row->id_pagina == 0 ? 'selected' : null }}>Nenhum</option>
 
                             @foreach ($paginas as $pag)
-                                <option value="{{ $pag->id }}" {{ isset($row) && $row->id_pagina == $pag->id ? 'selected="selected"' : null }}>{{ $pag->descricao }}</option>
+                                <option value="{{ $pag->id }}" {{ isset($row) && $row->id_pagina == $pag->id ? 'selected="selected"' : null }}>{{ $pag->titulo }}</option>
                             @endforeach
 
                         </select>
@@ -93,7 +104,7 @@ $input_label_hidden = null;
             </div>
             <!-- END Subpágina -->
 
-            <!-- BEGIN Idioma -->
+            {{-- <!-- BEGIN Idioma -->
             <div class="row">
                 <div class="col s12 mb-1">
                     <div class="input-field">
@@ -109,7 +120,7 @@ $input_label_hidden = null;
                     </div>
                 </div>
             </div>
-            <!-- END Idioma -->
+            <!-- END Idioma --> --}}
 
             <!-- BEGIN Status -->
             <div class="row">
@@ -210,16 +221,6 @@ $input_label_hidden = null;
                 <!-- BEGIN imagem -->
                 <div class="row">
                     <div class="col s12 mb-1">
-                        {{-- <div class="input-field files input">
-                            <div class="nome_arquivo" data-placeholder="Selecione um arquivo"></div>
-                            <button type="button" class="btn btn-large waves-effect redefinir" style="{{ isset($row) && !empty($row->imagem) ? 'display: none;' : '' }}">
-                                <i class="material-icons">undo</i>
-                            </button>
-                            <button type="button" class=" btn btn-large btn_add_new_image waves-effect image_alt amber">
-                                <i class="material-icons">upload</i>
-                            </button>
-                            <input type="file" name="arquivo[]" id="img_perfil" multiple>
-                        </div> --}}
                         <div class="file-field input-field">
                             <div class="btn">
                                 <div class="file">
@@ -283,10 +284,20 @@ $input_label_hidden = null;
             </div>
             <!-- END files_upload -->
 
+            <!-- BEGIN Texto -->
+            <div class="row">
+                <div class="col s12 mb-1">
+                    <div class="input-field browser-default">
+                        <input type="text" name="texto" value="{{ isset($row) ? $row->texto : null }}" class="editor full--editor">
+                    </div>
+                </div>
+            </div>
+            <!-- END Texto -->
+
         </div>
         <!-- END Informações -->
 
-        <!-- BEGIN Idiomas -->
+        {{-- <!-- BEGIN Idiomas -->
         <div id="idiomas">
 
             @foreach ($idiomas as $idioma)
@@ -340,7 +351,7 @@ $input_label_hidden = null;
             @endforeach
 
         </div>
-        <!-- END Idiomas -->
+        <!-- END Idiomas --> --}}
 
         <div class="row">
 

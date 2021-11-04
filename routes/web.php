@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ApiController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannersController;
+use App\Http\Controllers\Admin\ClientesController;
 use App\Http\Controllers\Admin\ContatoController;
 use App\Http\Controllers\Admin\FotosController;
 use App\Http\Controllers\Admin\HomeController as Dashboard;
@@ -53,10 +54,10 @@ Route::prefix('/admin')->group(function ($admin) {
         Route::get('/', [BannersController::class, 'index'])->name('admin.banners');
         Route::get('/add', [BannersController::class, 'show_form'])->name('admin.banners.add');
         Route::get('/{id}', [BannersController::class, 'show_form'])->name('admin.banners.edit')->where('id', '[0-9]+');
-        Route::post('/', [IdiomasController::class, 'insert'])->name('admin.banners.insert');
-        Route::put('/{id}', [BannersController::class, 'update'])->name('admin.banners.put')->where('id', '[0-9]+');
-        Route::patch('/{campo}/{valor}', [BannersController::class, 'replace'])->name('admin.banners.patch')->where('id', '[0-9]+');
-        Route::delete('/', [BannersController::class, 'delete/$1'])->name('admin.banners.delete');
+        Route::post('/', [BannersController::class, 'insert'])->name('admin.banners.insert');
+        Route::put('/', [BannersController::class, 'update'])->name('admin.banners.put')->where('id', '[0-9]+');
+        Route::patch('/{campo}', [BannersController::class, 'replace'])->name('admin.banners.patch')->where('id', '[0-9]+');
+        Route::delete('/', [BannersController::class, 'delete'])->name('admin.banners.delete');
 
     });
 
@@ -66,7 +67,7 @@ Route::prefix('/admin')->group(function ($admin) {
         Route::get('/', [CategoriasController::class, 'index'])->name('admin.categorias');
         Route::get('/add', [CategoriasController::class, 'show_form'])->name('admin.categorias.add');
         Route::get('/{id}', [CategoriasController::class, 'show_form'])->name('admin.categorias.edit')->where('id', '[0-9]+');
-        Route::post('/', [IdiomasController::class, 'insert'])->name('admin.categorias.insert');
+        Route::post('/', [CategoriasController::class, 'insert'])->name('admin.categorias.insert');
         Route::put('/', [CategoriasController::class, 'update'])->name('admin.categorias.put')->where('id', '[0-9]+');
         Route::patch('/{campo}/{valor}', [CategoriasController::class, 'replace'])->name('admin.categorias.patch')->where('id', '[0-9]+');
         Route::delete('/', [CategoriasController::class, 'delete/$1'])->name('admin.categorias.delete');
@@ -258,23 +259,36 @@ Route::prefix('/admin')->group(function ($admin) {
 
     });
 
+    /** clientes */
+    Route::prefix('clientes')->group(function () {
+
+        Route::get('/', [ClientesController::class, 'index'])->name('admin.clientes');
+        Route::get('/template', [ClientesController::class, 'index'])->name('admin.clientes.template');
+        Route::get('/add', [ClientesController::class, 'show_form'])->name('admin.clientes.add');
+        Route::get('/{id}', [ClientesController::class, 'show_form'])->name('admin.clientes.edit')->where('id', '[0-9]+');
+        Route::post('/', [ClientesController::class, 'insert'])->name('admin.clientes.insert');
+        Route::put('/', [ClientesController::class, 'update'])->name('admin.clientes.put')->where('id', '[0-9]+');
+        Route::patch('/{campo}', [ClientesController::class, 'replace'])->name('admin.clientes.patch')->where('id', '[0-9]+');
+        Route::delete('/', [ClientesController::class, 'delete'])->name('admin.clientes.delete');
+
+    });
+
 });
 
 /** Rotas para a área pública */
 Route::prefix('/')->group(function () {
 
-    Route::get('/', [Home::class, 'index']);
     Route::get('/api/token', [API::class, 'token'])->name('api.token');
 
     // ApiController
     Route::get('/api/translate/{lang}', [API::class, 'translate'])->name('api.token');
 
     // HomeController
-    Route::get('/', [Home::class, 'index']);
-    Route::get('/home', [Home::class, 'index'])->name('home');
-    Route::get('/inicio', [Home::class, 'index'])->name('home');
-    Route::get('/home-page', [Home::class, 'index'])->name('home');
-    Route::get('/pagina-inicial', [Home::class, 'index'])->name('home');
+    Route::get('/', [Home::class, 'index'])->name('home');
+    // Route::get('/home', [Home::class, 'index'])->name('home');
+    // Route::get('/inicio', [Home::class, 'index'])->name('home');
+    // Route::get('/home-page', [Home::class, 'index'])->name('home');
+    // Route::get('/pagina-inicial', [Home::class, 'index'])->name('home');
 
     // PageController
     // Route::get('/fotos', [Paginas::class, 'fotos']);
@@ -283,6 +297,19 @@ Route::prefix('/')->group(function () {
     // NoticiasController
     Route::get('/noticias', [Noticias::class, 'index'])->name('noticias');
     Route::get('/noticias/{id}', [Noticias::class, 'show'])->name('noticias.id');
+
+    // O Grupo
+    Route::prefix('grupo')->group(function () {
+
+        Route::get('/', [Paginas::class, 'grupo'])->name('grupo');
+
+    });
+
+    Route::prefix('contato')->group(function() {
+
+        Route::get('/orcamento', [Contato::class, 'orcamento']) -> name('orcamento');
+
+    });
 
     $menus = new PaginaModel();
 

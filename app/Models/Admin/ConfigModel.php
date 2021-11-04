@@ -98,11 +98,8 @@ class ConfigModel extends Authenticatable
     public function create($request)
     {
 
-        echo '<pre>';
-        print_r($_POST);
-
         $data = [];
-        $path = 'assets/embaixada/img/';
+        $path = 'assets/grupoalertaweb/wp-content/uploads/' . date('Y') . '/' . date('m') . '/';
         $origName = null;
         $fileName = null;
         $imagem = null;
@@ -131,23 +128,23 @@ class ConfigModel extends Authenticatable
                 // $config['value'][$lang[1]] = json_encode($traducao[$lang[1]]);
                 // $data[$traducao[$lang[1]][$lang[0]]] = $config;
             } else {
-                $config = ['config' => $ind, 'value' => (!empty($val) ? $val : null)];
-                $data['config'][$ind] = $config;
+                $data[] = ['config' => $ind, 'value' => (!empty($val) ? $val : null)];
+                // $data['config'][$ind] = $config;
             }
 
         }
-        dump($data);
 
-        for ($i = 0; $i < count($data); $i++) {
+        // for ($i = 0; $i < count($data); $i++) {
+        foreach($data as $conf) {
 
-            $issetConfig = $this->select('config', 'value')->where('config', $data[$i]['config'])->first();
+            $issetConfig = $this->select('config', 'value')->where('config', $conf['config'])->first();
 
             if (isset($issetConfig)) {
-                if ($data[$i]['value'] != $issetConfig->value) {
-                    $this->where('config', $data[$i]['config'])->update($data[$i]);
+                if ($conf != $issetConfig->value) {
+                    $this->where('config', $conf['config'])->update($conf);
                 }
             } else {
-                $this->insert($data[$i]);
+                $this->insert($conf);
             }
 
         }
